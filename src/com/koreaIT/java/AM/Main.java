@@ -55,24 +55,25 @@ public class Main {
 				String[] commandBits = command.split(" ");
 				int id = Integer.parseInt(commandBits[2]); // "1" -> 1
 
-				boolean foundArticle = false;
+				Article foundArticle = null;
 
 				for (int i = 0; i < articles.size(); i++) {
 					Article article = articles.get(i);
 
 					if (article.id == id) {
-						foundArticle = true;
+						foundArticle = article;
 						break;
 					}
 				}
 
-				if (foundArticle == false) {
+				if (foundArticle == null) {
 					System.out.printf("%d번 게시물은 존재하지 않습니다.\n", id);
 					continue;
-				}else {
-					System.out.printf("%d번 게시물은 존재합니다.\n", id);
-					continue;
 				}
+				System.out.printf("번호 : %d\n", foundArticle.id);
+				System.out.printf("날짜 : 2022-12-12 12:12:12\n");
+				System.out.printf("제목 : %s\n", foundArticle.title);
+				System.out.printf("내용 : %s\n", foundArticle.body);
 
 			} else {
 				System.out.printf("%s는(은) 존재하지 않는 명령어 입니다.\n", command);
